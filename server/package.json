@@ -14,5 +14,8 @@
     "cors": "^2.8.5",
     "express": "^5.0.0-alpha.8",
     "mongoose": "^5.9.19"
+  },
+  "devDependencies": {
+    "html-webpack-plugin": "^4.0.0-beta.14"
   }
 }
