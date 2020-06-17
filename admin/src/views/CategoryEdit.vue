@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>新建分类</h1>
+    <h1>{{id ? "编辑":"新建"}}分类</h1>
     <el-form label-width="120px" @submit.native.prevent="save">
       <el-form-item label="名称">
         <el-input v-model="model.name"></el-input>
@@ -15,6 +15,10 @@
 
 <script>
 export default {
+  // 接收路由传递过来的各种参数
+  props: {
+    id: {}
+  },
   data(){
     return {
       model: {
@@ -23,9 +27,29 @@ export default {
     }
   },
   methods:{
-    save(){
-      this.$http.post()
+    async save(){
+      // 增加和修改数据的方法
+      let res;
+      if (this.id){
+        res = await this.$http.put(`categories/${this.id}`, this.model);
+      }else{
+        res = await this.$http.post('categories', this.model);
+      }
+      // console.log(res)
+      this.$router.push('/categories/list');
+      this.$message({
+        type:'success',
+        message: '保存成功'
+      })
+    },
+    async fetch(){
+      const res = await this.$http.get(`categories/${this.id}`)
+      this.model = res.data;
     }
+  },
+  created(){
+    // 判断是不是从编辑数据来的，如果是则进行编辑数据
+    this.id && this.fetch();
   }
 }
 </script>
