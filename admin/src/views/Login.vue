@@ -37,7 +37,7 @@ export default {
   },
   methods:{
     async login(){
-      // console.log(this.model);
+      console.log(this.model);
       const res = await this.$http.post('/login', this.model);
       localStorage.token = res.data.token;
       // console.log(res.data)

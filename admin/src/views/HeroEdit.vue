@@ -17,7 +17,8 @@
           <el-form-item label="头像">
             <el-upload
               class="avatar-uploader"
-              :action="$http.defaults.baseURL + '/upload'"
+              :action="uploadUrl"
+              :headers="getAuthHeaders()"
               :show-file-list="false"
               :on-success="afterUpload">
               <img v-if="model.avatar" :src="model.avatar" class="avatar">
@@ -94,7 +95,8 @@
               <el-form-item label="图标">
                 <el-upload
                   class="avatar-uploader"
-                  :action="$http.defaults.baseURL + '/upload'"
+                  :action="uploadUrl"
+                  :headers="getAuthHeaders()"
                   :show-file-list="false"
                   :on-success="res => $set(item, 'icon' , res.url)">
                   <img v-if="item.icon" :src="item.icon" class="avatar">
@@ -134,12 +136,13 @@ export default {
   },
   data(){
     return {
-      categories:[], // 存放英雄类sing的数组
-      items:[], // 存放顺风装备的数组
+      categories:[], // 存放英雄类型的数组
+      items:[], // 存放装备的数组
       model: {
         name: '',
         avatar: '',
-        scores: {}
+        scores: {},
+        skills: []
       }
     }
   },
@@ -151,6 +154,7 @@ export default {
         res = await this.$http.put(`/rest/heroes/${this.id}`, this.model);
       }else{
         res = await this.$http.post('/rest/heroes', this.model);
+        console.log(res);
       }
       // console.log(res)
       this.$router.push('/heroes/list');
@@ -172,13 +176,14 @@ export default {
     async fetchCategories(){
       const res = await this.$http.get(`/rest/categories`)
       this.categories = res.data;
-      console.log(this.categories);
+      // console.log(this.categories);
     },
     // 上传图片成功后执行的函数
     afterUpload(res){
-      // console.log(res)
+      console.log(res)
       // this.$set(this.model, 'avatar', res.url);
-      this.categories = res.url;
+      this.model.avatar = res.url;
+      
     }
   },
   created(){
