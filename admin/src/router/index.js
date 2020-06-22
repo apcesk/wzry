@@ -28,7 +28,7 @@ const originalPush = VueRouter.prototype.push
    return originalPush.call(this, location).catch(err => err)
 }
 const routes = [
-  {path: '/login', name: 'Login', component: Login},
+  {path: '/login', name: 'Login', component: Login, meta: {isPublic: true}},
   {
     path: '/',
     name: 'Main',
@@ -66,5 +66,11 @@ const routes = [
 const router = new VueRouter({
   routes
 })
-
+router.beforeEach((to, from, next)=>{
+  if (!to.meta.isPublic && !localStorage.token){
+    return next('/login')
+  }
+  next()
+  
+})
 export default router
