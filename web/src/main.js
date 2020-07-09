@@ -1,10 +1,14 @@
 import Vue from 'vue'
 import App from './App.vue'
+import VueAwesomeSwiper from 'vue-awesome-swiper'
 
 Vue.config.productionTip = false
 
+import 'swiper/swiper.scss'
 import './style.scss';
 import router from './router'
+
+Vue.use(VueAwesomeSwiper, /* { default options with global component } */)
 
 new Vue({
   router,
