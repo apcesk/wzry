@@ -26,12 +26,15 @@ $colors: (
     "primary":  #db9e3f,
     "white"  :  #fff,
     "light"  :  #f9f9f9,
+    'light-1':  #d3d9de,
     "grey"   :  #999,
     "grey-1" :  #666,
     "dark-1" :  #343440,
     "dark"   :  #222,
     "black"  :  #000,
 );
+
+$border-color: map-get($colors, 'light-1');
 
 
 @each $colorKey, $color in $colors {
@@ -47,7 +50,7 @@ $colors: (
 // text-align
 @each $var in (left, center, right) {
     .text-#{$var} {
-        text-align: $var;
+        text-align: $var !important;
     }
 }
 
@@ -84,6 +87,10 @@ $font-sizes: (
 
 .flex-column {
     flex-direction: column;
+}
+
+.flex-wrap{
+    flex-wrap: wrap;
 }
 
 $flex-jc: (
@@ -199,14 +206,109 @@ $spacing-sizes: (
 // nav
 
 .nav {
+    display: flex;
     .nav-item{
         border-bottom: 3px solid transparent;
         padding-bottom: 0.2rem;
         &.active { 
-            border-bottom:3px solid #fff;
+            color: map-get($colors, 'primary');
+            border-bottom-color: map-get($colors, 'primary');
         }
     }
-    
+    &.nav-inverse{
+        .nav-item{
+            color: map-get($colors ,'white');
+            &.active{
+                border-bottom-color: map-get($colors , 'white');
+            }
+        }
+    }
 }
 
 // nav
+
+.p-r{
+    position: relative;
+}
+
+.p-a{
+    position: absolute;
+}
+
+// sprite
+
+.sprite {
+    background: url(../src/assets/images/index.png) no-repeat 0 0;
+    background-size: 28.8462rem;
+    display: inline-block;
+    &.sprite-news {
+        width: 1.7692rem;
+        height: 1.5385rem;
+        background-position: 63.546% 15.517%;
+    }
+    &.sprite-story {
+        width: 1.7692rem;
+        height: 1.5385rem;
+        background-position: 90.483% 15.614%;
+    }
+    &.sprite-store {
+        width: 1.4615rem;
+        height: 1.6923rem;
+        background-position: 36.746% 0.924%;
+    }
+    &.sprite-test {
+        width: 1.5385rem;
+        height: 1.5385rem;
+        background-position: 10.408% 15.517%;
+    }
+    &.sprite-noob {
+        width: 1.5385rem;
+        height: 1.6154rem;
+        background-position: 89.733% 1.266%;
+    }
+    &.sprite-honor {
+        width: 1.8462rem;
+	    height: 1.5385rem;
+        background-position: 36.467% 15.287%;
+    }
+    &.sprite-king {
+        width: 1.8462rem;
+	    height: 1.8462rem;
+        background-position: 63.3% 0.927%;
+    }
+    &.sprite-wechat {
+        width: 1.8462rem;
+	    height: 1.5385rem;
+        background-position: 0 96.207%;
+    }
+    &.sprite-version {
+        width: 1.8462rem;
+	    height: 1.8462rem;
+        background-position: 63.3% 0.927%;
+    }
+    &.sprite-environment {
+        width: 1.5385rem;
+	    height: 1.5385rem;
+        background-position: 10.408% 15.517%;
+    }
+    &.sprite-inf-king {
+        width: 1.8462rem;
+	    height: 1.8462rem;
+        background-position: 63.3% 0.927%;
+    }
+    &.sprite-idea {
+        width: 2.3846rem;
+	    height: 1.9231rem;
+        background-position: 9.302% 0.813%;
+    }
+    &.sprite-arrow{
+        background-position: 38.577% 52.076%;
+        width: 0.7692rem;
+	    height: 0.7692rem;
+    }
+
+
+}
+
+
+// sprite
