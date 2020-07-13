@@ -1,0 +1,44 @@
+{
+  "id": "1940359",
+  "name": "wzry",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "14659073",
+      "name": "视频",
+      "font_class": "shipin",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    },
+    {
+      "icon_id": "372210",
+      "name": "cc-menu-circle",
+      "font_class": "cc-menu-circle",
+      "unicode": "e672",
+      "unicode_decimal": 58994
+    },
+    {
+      "icon_id": "7465305",
+      "name": "省略号",
+      "font_class": "shengluo",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "11301337",
+      "name": "英雄",
+      "font_class": "yingxiong",
+      "unicode": "e845",
+      "unicode_decimal": 59461
+    },
+    {
+      "icon_id": "13911962",
+      "name": "英雄榜  icon-heroes",
+      "font_class": "yingxiongbangicon-heroes",
+      "unicode": "e652",
+      "unicode_decimal": 58962
+    }
+  ]
+}
