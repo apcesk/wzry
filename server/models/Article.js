@@ -6,6 +6,8 @@ const schema = new mongoose.Schema({
     body : {type : String}, // 文章详情
     categories : [{type: mongoose.SchemaTypes.ObjectId, ref:'Category'}],// 英雄的类型
 
+},{
+    timestamps: true
 });
 
 
