@@ -15,6 +15,10 @@ import './style.scss';
 import Card from './components/Card.vue'
 import ListCard from './components/ListCard.vue'
 
+import axios from 'axios'
+Vue.prototype.$http = axios.create({
+  baseURL: 'http://localhost:3000/web/api'
+})
 Vue.use(VueAwesomeSwiper, /* { default options with global component } */)
 Vue.component('m-card', Card);
 Vue.component('m-list-card', ListCard);

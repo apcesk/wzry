@@ -32,6 +32,7 @@ $colors: (
     "dark-1" :  #343440,
     "dark"   :  #222,
     "black"  :  #000,
+    "info"   :  #55f
 );
 
 $border-color: map-get($colors, 'light-1');
@@ -53,7 +54,14 @@ $border-color: map-get($colors, 'light-1');
         text-align: $var !important;
     }
 }
-
+// text overflow
+.text-ellipsis {
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+// text overflow
 // font-size
 $base-font-size: 1rem;
 $font-sizes: (
