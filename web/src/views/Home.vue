@@ -72,19 +72,33 @@
       
       <m-list-card icon="cc-menu-circle" title="新闻资讯" :categories="newsCats">
         <template #items="{category}">
-          <div class="py-2 fs-lg d-flex" 
+          <router-link 
+            tag="div"
+            :to="`/articles/${news._id}`"
+            class="py-2 fs-lg d-flex" 
             v-for="(news, index) in category.newsList" :key="index">
             <span class="text-info">[{{news.CategoryName}}]</span>
             <span class="px-2">|</span>
             <span class="flex-1 text-dark-1 text-ellipsis">{{news.title}}</span>
             <span class="text-grey-1 fs-sm">{{news.createdAt | date}}</span>
-          </div>
+          </router-link>
         </template>
       </m-list-card>
 
-      <m-card icon="yingxiong" title="英雄列表">
-
-      </m-card>
+      <m-list-card icon="yingxiong" title="英雄列表" :categories="heroCats">
+        <template #items="{category}">
+          <div class="d-flex flex-wrap" style="margin: 0 -0.5rem;">
+            <router-link tag="div" :to="`/heroes/${hero._id}`"
+              class="p-2 text-center" style="width:20%;"
+              v-for="(hero, index) in category.heroList" :key="index">
+              <img :src="hero.avatar" :alt="hero.name" class="w-100">
+              <div>
+                {{hero.name}}
+              </div>
+            </router-link>
+          </div>
+        </template>
+      </m-list-card>
       
       <m-card icon="shipin" title="精彩视频">
 
@@ -126,7 +140,8 @@
           {title: "创意互动营", class: "sprite-idea"},
 
         ],
-        newsCats: []
+        newsCats: [],
+        heroCats: []
       }
     },
     computed: {
@@ -139,13 +154,22 @@
       this.startTimer()
     },
     created(){
-      this.fetchNewsCat()
+      this.fetchNewsCats();
+      this.fetchHeroCats();
+    },
+    componentWillUnmount() {
+      clearInterval(this.timer)
     },
     methods:{
-      async fetchNewsCat(){
+      async fetchNewsCats(){
         const res = await this.$http.get('news/list');
         this.newsCats = res.data;
-        console.log(this.newsCats);
+        // console.log(this.newsCats);
+      },
+      async fetchHeroCats(){
+        const res = await this.$http.get('heroes/list');
+        this.heroCats = res.data;
+        // console.log(this.heroCats);
       },
       slideTo(n){
         clearInterval(this.timer);

@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const schema = new mongoose.Schema({
     name : {type : String},
     avatar : {type: String},// 头像的地址
+    banner : {type: String},// 详情页背景
     title : {type: String},// 英雄的称号
     categories : [{type: mongoose.SchemaTypes.ObjectId, ref:'Category'}],// 英雄的类型
     scores : {
@@ -15,6 +16,8 @@ const schema = new mongoose.Schema({
     skills : [{
         icon : {type: String},// 技能图标
         name : {type: String},// 技能名称
+        delay : {type: String},// 技能冷却
+        cost : {type: String},// 技能消耗
         description : {type: String},// 技能介绍
         tips : {type: String},// 小提示
     }],
@@ -30,4 +33,4 @@ const schema = new mongoose.Schema({
 });
 
 
-module.exports = mongoose.model('Hero', schema)
+module.exports = mongoose.model('Hero', schema, 'heroes')

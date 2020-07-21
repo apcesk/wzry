@@ -19,6 +19,9 @@ body {
 a {
     color: #999;
 }
+p {
+    line-height: 1.5em;
+}
 // reset
 
 // colors
@@ -32,7 +35,10 @@ $colors: (
     "dark-1" :  #343440,
     "dark"   :  #222,
     "black"  :  #000,
-    "info"   :  #55f
+    "info"   :  #55f,
+    'blue'   :  #4394ee,
+    'blue-1' :  #1f3695,
+    'danger' :  #791a15
 );
 
 $border-color: map-get($colors, 'light-1');
@@ -320,3 +326,11 @@ $spacing-sizes: (
 
 
 // sprite
+
+// borders
+@each $dir in (top, right, bottom, left) {
+    .border-#{$dir} {
+        border-#{$dir}: 1px solid $border-color;
+    }
+}
+// borders
