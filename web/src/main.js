@@ -10,14 +10,16 @@ import 'swiper/swiper-bundle.css'
 Vue.config.productionTip = false
 
 // import 'swiper/swiper.scss'
-import './style.scss';
+// import './style.scss';
+import './assets/scss/style.scss'
 import Card from './components/Card.vue'
 import ListCard from './components/ListCard.vue'
 
 import axios from 'axios'
 import './assets/iconfont/iconfont.css'
 Vue.prototype.$http = axios.create({
-  baseURL: 'http://localhost:3000/web/api'
+  baseURL: process.env.VUE_APP_API_URL || '/web/api',
+  // baseURL: 'http://localhost:3000/web/api'
 })
 Vue.use(VueAwesomeSwiper, /* { default options with global component } */)
 Vue.component('m-card', Card);

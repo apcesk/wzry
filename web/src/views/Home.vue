@@ -150,7 +150,7 @@
       }
     },
     mounted() {
-      console.log('Current Swiper instance object', this.swiper)
+      // console.log('Current Swiper instance object', this.swiper)
       this.startTimer()
     },
     created(){
@@ -191,11 +191,12 @@
     
   }
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
   .pagenation-home{
     bottom: 10%;
     right: 5%;
     z-index: 5;
+    position: absolute;
   }
   .nav-icons{
     border-top: 1px solid #ded9de;
