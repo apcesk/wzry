@@ -59,7 +59,7 @@ module.exports = app => {
         // 获取上传的文件接口
     app.post('/admin/api/upload', authMiddleware(), upload.single('file'), async(req, res) => {
         const file = await req.file;
-        file.url = `http://test.apcesk.com:3000/uploads/${file.filename}`;
+        file.url = `http://localhost:3000/uploads/${file.filename}`;
         res.send(file);
     });
 
